@@ -6,15 +6,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        # byebug
-        user = User.create!(user_params)
+        user = User.create(user_params)
         if user.valid?
             return render json: user, status: 201
         else
-            return render json: { error: "User not created" }, status: 404
+            return render json: { error: user.errors }, status: 404
         end
-        rescue ActiveRecord::RecordInvalid => e
-            return render json: { errors: e.record.errors.full_messages }, status: 422
     end
 
     private
