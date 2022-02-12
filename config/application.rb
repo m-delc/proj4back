@@ -43,9 +43,16 @@ module Back
         headers: :any,
         methods: %i[get post put patch delete options head]
         end
-      end 
+      end
+
 
 
     config.api_only = true
+
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
+    # if any problems, comment the following out
+    # config.action_dispatch.cookies_same_site_protection = :strict
+
   end
 end

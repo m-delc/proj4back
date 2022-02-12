@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'http://localhost:3000/users', to: "users#index"
   post '/users', to: "users#create"
   post '/login', to: "sessions#login"
+  get '/authorized_user', to: "users#show"
 
 
 end

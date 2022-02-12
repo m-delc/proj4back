@@ -33,3 +33,5 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.16'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+gem 'byebug', '~> 11.1', '>= 11.1.3'
