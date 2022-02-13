@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
     before_action :authorize_user
     
     def current_user
-        User.find_by(id: session[:current_user])
+        user = User.find_by(id: session[:current_user])
     end
 
     def authorize_user   
