@@ -1,14 +1,43 @@
 class SessionsController < ApplicationController
 
+    skip_before_action :authorize_user, only: [:login]
+
+    # michael
+    # michael
+    # michael
+    # michael
+    # michael
+    # def login
+    #     user = User.find_by(name: params[:username])
+    #     if user&.authenticate(params[:password])
+    #         session[:current_user] = user.id
+    #         # byebug
+    #         return render json: {message: "Welcome, #{user.username}!"}, status: 200
+    #     else
+    #         return render json: {error: "Invalid Password and/or Username"}, status: 401
+    #     end
+    # end
+
+    # ix
+    # ix
+    # ix
+    # ix
+    # ix
     def login
-        user = User.find_by(name: params[:username])
+        user = User.find_by(usernamename:params[:username])
         if user&.authenticate(params[:password])
             session[:current_user] = user.id
-            # byebug
-            return render json: {message: "Welcome, #{user.username}!"}, status: 200
+            session[:login_attempts] = 0
+            render json: user, status: 200
         else
-            return render json: {error: "Invalid Password and/or Username"}, status: 401
+            session[:login_attempts] ||= 0
+            session[:login_attempts] += 1
+            render json:{error:"Invalid Password and/or Username"},  status: 401
         end
+    end 
+
+    def logout
+        session.delete :current_user
     end
 
 end

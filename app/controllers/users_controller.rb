@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+    # what does this do
+    # what does this do
+    skip_before_action :authorize_user, only: [:create]
+
     def index
         users = User.all
         render json: users
@@ -21,6 +25,17 @@ class UsersController < ApplicationController
             return render json: { error: user.errors }, status: 404
         end
     end
+
+    # ix
+    # ix
+    # ix
+    # def create
+    #     user = User.create!(user_params)
+    #     session[:current_user] = user.id
+    #     render json: user, status: :created
+    # rescue ActiveRecord::RecordInvalid => invalid
+    #     render json: { errors: invalid.record.errors }, status: :unprocessable_entity
+    # end 
 
     private
 
